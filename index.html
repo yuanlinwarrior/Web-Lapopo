@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lapopo Framework</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lapupu網頁全資料/style.css">
 </head>
+
 <body>
 
     <header class="navbar">
-        <div class="logo">LOGO</div>
+        <div class="logo"><img id="logo-img" src="img1.jpg" alt="Logo Image"></div>
         <nav>
             <ul>
-                <li><a href="#">NEW</a></li>
-                <li><a href="#">GALLERY</a></li>
-                <li><a href="#">SHOP LIST</a></li>
+                <li><a href="#">MOME</a></li>
+                <li><a href="#">認識更多便便</a></li>
                 <li><a href="#">ABOUT</a></li>
             </ul>
         </nav>
@@ -25,89 +26,257 @@
 
     <main>
         <section class="hero">
-            <button class="arrow prev">＜</button>
+            <button class="arrow prev" id="prevBtn">＜</button>
+
             <div class="hero-shape">
-                <div class="cloud-placeholder"></div>
+                <div class="cloud-placeholder">
+                    <img id="hero-img" src="img1.jpg" alt="Hero Image">
+                </div>
             </div>
-            <button class="arrow next">＞</button>
+
+            <button class="arrow next" id="nextBtn">＞</button>
         </section>
 
         <section class="container news">
             <h2>NEWS</h2>
-            <p class="subtitle">fuxpufhpwhafphf</p>
+            <p class="subtitle">What’s new in the poop world? We’ll quietly tell you here.</p>
             <div class="news-grid">
                 <div class="news-item">
                     <div class="circle-img"><span class="badge">PICK UP</span></div>
-                    <p>fuvpufhpwhafphfah viahvihad[iovhafd]l vhioshciowd</p>
+                    <a href="https://heho.com.tw/archives/1473?utm_source=chatgpt.com">What does healthy poop look
+                        like?</a>
                 </div>
                 <div class="news-item">
                     <div class="circle-img"></div>
-                    <p>fuvpufhpwhafphfah viahvihad[iovhafd]l vhioshciowd</p>
+                    <p>Did you know? Your mood affects your poop.</p>
                 </div>
                 <div class="news-item">
                     <div class="circle-img"></div>
-                    <p>fuvpufhpwhafphfah viahvihad[iovhafd]l vhioshciowd</p>
+                    <p>Messy routines,angry poop！</p>
                 </div>
             </div>
-            <a href="#" class="btn-index">NEWS INDEX</a>
         </section>
-
-        <hr class="divider">
 
         <section class="container popo-list">
             <h2>POPO LIST</h2>
             <div class="stacked-cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div class="link-grid">
-                <ul>
-                    <li>> fuvpufhpwhafphf</li>
-                    <li>> vegvpuf</li>
-                    <li>> ggisspwhafphf</li>
-                </ul>
-                <ul>
-                    <li>> fuvpufhpwhafphf</li>
-                    <li>> vegvpuf</li>
-                    <li>> ggisspwhafphf</li>
-                </ul>
-            </div>
-            <a href="#" class="btn-index">POPO INDEX</a>
-        </section>
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo1.png" alt="便便1">
+                    </div>
+                    <div class="card-face card-back healthy">健康</div>
+                </div>
 
-        <hr class="divider">
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo2.png" alt="便便2">
+                    </div>
+                    <div class="card-face card-back unhealthy">不健康</div>
+                </div>
 
-        <section class="container game">
-            <h2>LAPOPO GAME</h2>
-            <div class="game-area">
-                <div class="game-cloud">
-                    <button class="btn-start">GAME START</button>
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo3.png" alt="便便3">
+                    </div>
+                    <div class="card-face card-back unhealthy">不健康</div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo4.png" alt="便便4">
+                    </div>
+                    <div class="card-face card-back healthy">健康</div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo5.png" alt="便便5">
+                    </div>
+                    <div class="card-face card-back unhealthy">不健康</div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo6.png" alt="便便6">
+                    </div>
+                    <div class="card-face card-back healthy">健康</div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-face card-front">
+                        <img src="popo7.png" alt="便便7">
+                    </div>
+                    <div class="card-face card-back healthy">非常健康</div>
                 </div>
             </div>
         </section>
 
-        <section class="container video">
-            <h2>LAPOPO VIDEO</h2>
-            <div class="video-placeholder">
-                <div class="play-button"></div>
-            </div>
-            <a href="#" class="btn-index">POPO VIDEO INDEX</a>
+        <script src="lapupu網頁全資料/script.js"></script>
+        <div class="link-grid">
+            <ul>
+                <li>
+                    <a href="page1.html">> 飲食改善</a>
+                    <div class="dropdown-desc">多吃高纖維蔬菜，如青花菜或地瓜，能幫助腸道排毒！</div>
+                </li>
+                <li>
+                    <a href="page2.html">> 補足水分</a>
+                    <div class="dropdown-desc">每天喝足體重 x 30cc 的水，是軟化便便的關鍵。</div>
+                </li>
+                <li>
+                    <a href="page3.html">> 規律運動</a>
+                    <div class="dropdown-desc">每天走路 30 分鐘，能促進腸胃蠕動，減少便秘。</div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="page4.html">> 攝取食物</a>
+                    <div class="dropdown-desc">發酵食物如優格、納豆含有益生菌，是腸道的好朋友。</div>
+                </li>
+                <li>
+                    <a href="page5.html">> 環境影響</a>
+                    <div class="dropdown-desc">壓力大會影響自律神經，進而導致腸道緊縮喔！</div>
+                </li>
+                <li>
+                    <a href="page6.html">> 後續用途</a>
+                    <div class="dropdown-desc">你知道嗎？未來的科技甚至能將便便轉化為能源！</div>
+                </li>
+            </ul>
+        </div>
         </section>
-    </main>
 
-    <footer class="footer">
-        <nav class="footer-nav">
-            <a href="#">HOME</a>
-            <a href="#">NEW</a>
-            <a href="#">GALLERY</a>
-            <a href="#">SHOP LIST</a>
-            <a href="#">ABOUT</a>
-        </nav>
-        <p class="copyright">fuvpufhpwhafphfahviahvihad...<br>© chisohcidshdchishciodhshcoldshciahc</p>
-        <div class="jagged-edge"></div>
-    </footer>
+        <section class="container game" id="game-section">
+            <h2>LAPOPO GAME</h2>
+            <p class="subtitle">把便便養好 (Need flex sensor)</p>
+
+            <div class="game-area pop-card">
+                <div id="game-intro">
+                    <div class="cloud-placeholder">
+                        <img id="game-img" src="img1.jpg" alt="game Image"
+                            style="max-width: 100%; border: 3px solid #222;">
+                    </div>
+                    <div class="game-cloud" style="margin-top: 20px;">
+                        <button class="btn-start btn" onclick="startGame()">GAME START</button>
+                    </div>
+                </div>
+
+                <div id="game-play" style="display: none;">
+                    <p>今日剩餘行動次數：<span id="clicks-left">3</span></p>
+
+                    <div id="game-main">
+                        <div id="status-display" style="font-size: 5rem; margin: 20px 0;">😐</div>
+                        <div id="feedback-text" style="font-weight: bold; margin-bottom: 20px; color: #FF69B4;">
+                            準備好照顧你的便便了嗎？
+                        </div>
+
+                        <div class="game-controls" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <button class="btn" onclick="playGame(2, '水份讓便便變溫柔了！')">💧 喝水</button>
+                            <button class="btn" onclick="playGame(1, '纖維質讓便便很有型！')">🥬 吃菜</button>
+                            <button class="btn" onclick="playGame(-1, '糖分太多，腸道菌在打架...')">🧋 喝飲料</button>
+                            <button class="btn" onclick="playGame(-2, '炸物太油，便便壓力很大！')">🍗 吃炸物</button>
+                        </div>
+                    </div>
+
+                    <div id="result-screen"
+                        style="display: none; background: #00BFFF; padding: 20px; border: 3px solid #222; margin-top: 20px;">
+                        <h3 id="result-title"></h3>
+                        <p id="result-desc"></p>
+                        <p id="result-advice" style="font-size: 0.9rem;"></p>
+                        <button class="btn" onclick="startGame()" style="background: #fff;">再玩一次</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            /* --- 遊戲邏輯 JS --- */
+            let score = 0;
+            let clicks = 0;
+            const maxClicks = 3;
+
+            // 按下 GAME START 的動作
+            function startGame() {
+                // 重置分數與次數
+                score = 0;
+                clicks = 0;
+
+                // 切換顯示區塊
+                document.getElementById('game-intro').style.display = 'none';
+                document.getElementById('game-play').style.display = 'block';
+                document.getElementById('game-main').style.display = 'block';
+                document.getElementById('result-screen').style.display = 'none';
+
+                // 重置文字
+                document.getElementById('clicks-left').innerText = maxClicks;
+                document.getElementById('status-display').innerText = '😐';
+                document.getElementById('feedback-text').innerText = '點擊按鈕選擇今日飲食！';
+            }
+
+            function playGame(points, message) {
+                if (clicks < maxClicks) {
+                    score += points;
+                    clicks++;
+
+                    document.getElementById('clicks-left').innerText = maxClicks - clicks;
+                    document.getElementById('feedback-text').innerText = message;
+
+                    updateEmoji();
+
+                    if (clicks === maxClicks) {
+                        setTimeout(showResult, 800);
+                    }
+                }
+            }
+
+            function updateEmoji() {
+                const display = document.getElementById('status-display');
+                if (score >= 3) display.innerText = '💩✨';
+                else if (score >= 1) display.innerText = '🙂';
+                else if (score >= -1) display.innerText = '😐';
+                else display.innerText = '😣';
+            }
+
+            function showResult() {
+                document.getElementById('game-main').style.display = 'none';
+                const resultScreen = document.getElementById('result-screen');
+                resultScreen.style.display = 'block';
+
+                const title = document.getElementById('result-title');
+                const desc = document.getElementById('result-desc');
+                const advice = document.getElementById('result-advice');
+
+                if (score >= 4) {
+                    title.innerText = "完美香蕉便！";
+                    desc.innerText = "今日狀態：五星級的健康！";
+                    advice.innerText = "建議：保持這個好習慣，你是腸道的小超人！";
+                } else if (score >= 1) {
+                    title.innerText = "普通好便便";
+                    desc.innerText = "今日狀態：還不錯，算平穩。";
+                    advice.innerText = "建議：再多加一點點蔬菜，會更順暢喔！";
+                } else if (score >= -1) {
+                    title.innerText = "有點乾巴巴";
+                    desc.innerText = "今日狀態：便便覺得有點口渴。";
+                    advice.innerText = "建議：放下手中的飲料，換成白開水試試看？";
+                } else {
+                    title.innerText = "腸道大塞車";
+                    desc.innerText = "今日狀態：便便在裡面出不來。";
+                    advice.innerText = "建議：炸物雖好但別過量，快去多吃兩口青菜壓壓驚！";
+                }
+            }
+        </script>
+
+
+        <footer class="footer">
+            <nav class="footer-nav">
+                <a href="#">HOME</a>
+                <a href="#">NEW</a>
+                <a href="#">GALLERY</a>
+                <a href="#">SHOP LIST</a>
+                <a href="#">ABOUT</a>
+            </nav>
+            <p class="copyright">fuvpufhpwhafphfahviahvihad...<br>© chisohcidshdchishciodhshcoldshciahc</p>
+            <div class="jagged-edge"></div>
+        </footer>
 
 </body>
+
 </html>
