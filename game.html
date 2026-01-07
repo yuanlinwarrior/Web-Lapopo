@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>把便便養好｜遊戲</title>
+
+    <style>
+        /* --- 全域普普風設定 --- */
+        :root {
+            --primary: #FFD700;
+            --secondary: #FF69B4;
+            --accent: #00BFFF;
+            --dark: #222;
+            --white: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--primary);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pop-card {
+            background: var(--white);
+            border: 4px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 4px solid var(--secondary);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* --- 按鈕 --- */
+        .btn {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: var(--secondary);
+            border: 3px solid var(--dark);
+            box-shadow: 5px 5px 0 var(--dark);
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: 0.1s;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--dark);
+            background: var(--accent);
+        }
+
+        /* --- 遊戲顯示 --- */
+        #status-display {
+            font-size: 6rem;
+            margin: 20px 0;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        #feedback-text {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            min-height: 1.5em;
+        }
+
+        .game-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        #result-screen {
+            display: none;
+            background: var(--accent);
+            padding: 30px;
+            border: 4px solid var(--dark);
+            margin-top: 20px;
+        }
+.back-home-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="pop-card">
+            <h2>《把便便養好》</h2>
+
+            <p>今日剩餘行動次數：<span id="clicks-left">3</span></p>
+
+            <div id="game-main">
+                <div id="status-display">😐</div>
+                <div id="feedback-text">點擊下方按鈕開始照顧它！</div>
+
+                <div class="game-controls">
+                    <button class="btn" onclick="playGame(2, '水份讓便便變溫柔了！')">💧 喝水</button>
+                    <button class="btn" onclick="playGame(1, '纖維質讓便便很有型！')">🥬 吃菜</button>
+                    <button class="btn" onclick="playGame(-1, '糖分太多，腸道菌在打架...')">🧋 喝飲料</button>
+                    <button class="btn" onclick="playGame(-2, '炸物太油，便便壓力很大！')">🍗 吃炸物</button>
+                </div>
+            </div>
+
+            <div id="result-screen">
+                <h3 id="result-title"></h3>
+                <p id="result-desc"></p>
+                <p id="result-advice"></p>
+                <button class="btn" style="background:#fff;" onclick="resetGame()">再玩一次</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let clicks = 0;
+        const maxClicks = 3;
+
+        function playGame(points, message) {
+            if (clicks >= maxClicks) return;
+
+            score += points;
+            clicks++;
+
+            document.getElementById('clicks-left').innerText = maxClicks - clicks;
+            document.getElementById('feedback-text').innerText = message;
+
+            updateEmoji();
+
+            if (clicks === maxClicks) {
+                setTimeout(showResult, 800);
+            }
+        }
+
+        function updateEmoji() {
+            const display = document.getElementById('status-display');
+            if (score >= 3) display.innerText = '💩✨';
+            else if (score >= 1) display.innerText = '🙂';
+            else if (score >= -1) display.innerText = '😐';
+            else display.innerText = '😣';
+        }
+
+        function showResult() {
+            document.getElementById('game-main').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+
+            const title = document.getElementById('result-title');
+            const desc = document.getElementById('result-desc');
+            const advice = document.getElementById('result-advice');
+
+            if (score >= 4) {
+                title.innerText = "完美香蕉便！";
+                desc.innerText = "今日狀態：五星級的健康！";
+                advice.innerText = "保持這個好習慣，你是腸道的小超人！";
+            } else if (score >= 1) {
+                title.innerText = "普通好便便";
+                desc.innerText = "狀態穩定，但還能更好。";
+                advice.innerText = "下次多吃一點蔬菜吧！";
+            } else if (score >= -1) {
+                title.innerText = "有點乾巴巴";
+                desc.innerText = "便便有點口渴。";
+                advice.innerText = "試著多喝水看看？";
+            } else {
+                title.innerText = "腸道大塞車";
+                desc.innerText = "便便卡住了！";
+                advice.innerText = "炸物少一點，青菜多一點！";
+            }
+        }
+
+        function resetGame() {
+            score = 0;
+            clicks = 0;
+            document.getElementById('clicks-left').innerText = maxClicks;
+            document.getElementById('status-display').innerText = '😐';
+            document.getElementById('feedback-text').innerText = '點擊下方按鈕開始照顧它！';
+            document.getElementById('game-main').style.display = 'block';
+            document.getElementById('result-screen').style.display = 'none';
+        }
+    </script>
+    <!-- 🔙 返回首頁 -->
+    <a href="index.html" class="btn back-home-btn">🏠 返回首頁</a>
+</div>
+</body>
+</html>
